@@ -25,7 +25,7 @@ yaourt -S mentohust
 }}}
 另外，你也可以直接下载已经编译好的软件包（目前只有[menthttp://mentohust.googlecode.com/files/mentohust-0.3.1-1-x86_64.pkg.tar.gz x86_64平台]可供下载。= �动编译 =
   # 准备好源代码。
-您可以直接[http://code.google.com/p/mentohust/downloads/list 下?q=rpm载源代码包]或者运行以下命令从svn仓库取出最新版代码并生成对应的configure文件：
+您可以直接[http://code.google.com/p/mentohust/downloads/list 下?q=tar.gz载源代码包]或者运行以下命令从svn仓库取出最新版代码并生成对应的configure文件：
 {{{
 svn checkout http://mentohust.googlecode.com/svn/trunk/ mentohust
 cd mentohust
