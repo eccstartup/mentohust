@@ -23,33 +23,36 @@ rpm -ivh "rpm包文件名"
 {{{
 yaourt -S mentohust
 }}}
-另外，你也可以直接下载已经编译好的软件包（目前只有[menthttp://mentohust.googlecode.com/files/mentohust-0.3.1-1-x86_64.pkg.tar.gz x86_64平台]可供下载。= �动编译 =
-  # 准备好源代码。
-您可以直接[http://code.google.com/p/mentohust/downloads/list 下?q=tar.gz载源代码包]或者运行以下命令从svn仓库取出最新版代码并生成对应的configure文件：
+另外，你也可以直接下载已经编译好的软件包（目�[http://mentohust.googlecode.com/files/mentohust-0.3.1-2-x86_64.pkg.tar.gz x86_64平台]或[http://mentohust.googlecode.com/files/mentohust-0.3.1-2-i686.pkg.tar.gz i686平台]  )。
+
+= 手动编译 =
+  == 准备好源代码 ==
+  ��以直接[http://code.google.com/p/mentohust/downloads/list 下?q=tar.gz载源代码包]或者运行以下命令从svn仓库取出最新版代码并生成对应的configure文件：
 {{{
-svn checkout http://mentohust.googlecode.com/svn/trunk/ mentohust
+  svn checkout http://mentohust.googlecode.com/svn/trunk/ mentohust
 cd mentohust
 sh autogen.sh
 }}}
+  }}}
 
-  # 配置MentoHUST。
-目前您可以根据自己的需求启动或禁止以下特性：
+  == 配置MentoHUST ==
+  ��您可以根据自己的需求启动或禁止以下特性：
 {{{
 --enable-debug         Build a debug version                               
 --disable-encodepass   Don't encode password                               
---disable-arp          Don't care ARP info                                 
+--disable-arp          Don't care AR  P info                                 
 --disable-notify       Don't show notification
 }}}
-对于普通PC用户，一般运行这个命令配置即可：
+对于  普通PC用户，一般运行这个命令配置即可：
 {{{
 ./configure --prefix=/usr
 }}}
-对于交叉编译的用户，建议只保留ARP特性：
+对于交叉编译的用户，建议只保留== 编译并安装 ==
 {{{
-./configure --host=arm-linux --disable-encodepass --disable-notify
+make && make install
 }}}
 
-  # 编译并安装
+  == 给程序授予超级用户权限（可选） ==��并安装
 {{{
 make && make install
 }}}
@@ -70,8 +73,7 @@ AUR中的mentoHUST软件包提供了一个rc脚本，因此直接在系统配置
 DAEMONS=(syslog-ng network ... @mentohust ...)
 }}}
 
-== rc.local方式 ==
-对于没有修改/etc/sudoers文件使得sudo无需密码的用户，使用上面的方法是不能实现mentohust开机自动运行的，可通过修改/etc/rc.local或者/etc/gdm/Init/Default等文件来实现，例如：
+== rc.“在桌面环境中添加自动启动”的方法也许于没有修改/etc/sudoers文件使得sudo无需密码的用户，使用上面的方法是不能实现mentohust开机自动运行的，可通过修改/etc/rc.local或者/etc/gdm/Init/Default等文件来实现，例如：
 {{{
 sudo gedit /etc/gdm/Init/Default
 }}}
