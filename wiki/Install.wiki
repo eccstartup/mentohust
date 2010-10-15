@@ -14,8 +14,8 @@ rpm -ivh "rpm包文件名"
 == Ubuntu发行版 ==
 请[http://code.google.com/p/mentohust/downloads/list?q=deb 下载最新的DEB软件包]，双击deb包即可安装。
 
-== ArchLinux发行版 ==
-目前，ArchLinux发行版的用户可以在AUR中搜索mentohust软件包来进行安装。或者点击以下下链接直接查
+== Arch{{{ArchLinux}}}发行版 ==
+目前，{{{ArchLinux}}}��版的用户可以在AUR中搜索mentohust软件包来进行安装。或者点击以下下链接直接查
 看：
 [http://aur.archlinux.org/packages.php?ID=33531 AUR上mentohust包]
 
@@ -40,21 +40,20 @@ sh autogen.sh
 {{{
 --enable-debug         Build a debug version                               
 --disable-encodepass   Don't encode password                               
---disable-arp          Don't care AR  P info                                 
+--disable-arp          Don't car--disable-nls          Disable NLS
+--with-pcap=TYPE       How to link libpcap: dyload(Default) | dylib | stlib | PATHre AR  P info                                 
 --disable-notify       Don't show notification
 }}}
-对于  普通PC用户，一般运行这个命令配置即可：
+对于  普通PC用户，一般运行这个�禁用所有特性并链接libpcap而不是动态载入：
 {{{
-./configure --prefix=/usr
-}}}
-对于交叉编译的用户，建议只保留== 编译并安装 ==
+./configure --host=mipsel-linux --disable-encodepass --disable-arp --disable-notify --disable-nls --with-pcap=dylib��保留== 编译并安装 ==
 {{{
 make && make install
 }}}
 
   == 给程序授予超级用户权限（可选） ==��并安装
 {{{
-make && make install
+uake && make install
 }}}
 
   # 给程序授予超级用户权限（可选）
@@ -65,15 +64,12 @@ sudo chmod a+s /usr/bin/mentohust
 
 = 开机运行 =
 == Ubuntu、Fedora用户 ==
-选择菜单“系统->首选项->启动应用程序”，点击“添加”，输入名称MentoHUST，命令sudo mentohust，点击“添加”即可。
+选择菜单“系统->首选项->启动应用程序”，点击对于没有修改/etc/sudoers文件使得sudo无需密码的用户，此方法可能无效，这时可通过{{{sudo chmod u+s /usr/bin/mentohust}}}授予权限然后按此方法添加命令为mentohust的启动项。
+
+== {{{ArchLinux}}}，输入名称MentoHUST，命令sudo mentohust，点击“添加”即可。
 
 == ArchLinux用户 ==
-AUR中的mentoHUST软件包提供了一个rc脚本，因此直接在系统配置文件/etc/rc.conf中的DAEMONS节添加'mentohust' 即可：
-{{{
-DAEMONS=(syslog-ng network ... @mentohust ...)
-}}}
-
-== rc.“在桌面环境中添加自动启动”的方法也许于没有修改/etc/sudoers文件使得sudo无需密码的用户，使用上面的方法是不能实现mentohust开机自动运行的，可通过修改/etc/rc.local或者/etc/gdm/Init/Default等文件来实现，例如：
+AUR中的mentoHUST软件包提供了一个rc脚本，因此直接在系统配置文件/etc/rc.conf中的DAEMONS节添加'mentohu修改*/etc/rc.local*或者*/etc/gdm/Init/Default*等文件��运行的，可通过修改/etc/rc.local或者/etc/gdm/Init/Default等文件来实现，例如：
 {{{
 sudo gedit /etc/gdm/Init/Default
 }}}
